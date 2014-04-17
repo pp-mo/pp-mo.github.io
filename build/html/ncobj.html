@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ncobj &mdash; ncobj 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ncobj 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">ncobj 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ncobj">
+<h1>ncobj<a class="headerlink" href="#ncobj" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<span class="target" id="module-ncobj"></span><p>An abstract representation of NetCDF data for manipulation purposes.</p>
+<p>The purpose of this is to allow arbitrary manipulation of NetCDF data,
+decoupled from the NetCDF file API.</p>
+<p>A separate &#8216;nc_dataset&#8217; submodule provides an interface for reading and
+writing this form to and from NetCDF4.Dataset objects.</p>
+<p>The containment of elements within other elements is two-way navigable, so a
+reference to any part of a data structure potentially references the entire
+object.  This enables all elements to provide a &#8220;remove&#8221; method.
+(For this purpose, Attributes are also full independent objects.)</p>
+<p>Elements which may be the target of internal naming &#8220;references&#8221;, such as
+user-types and dimensions, can be either duplicate object references or
+independent objects.  Any inconsistent references are automatically reconciled
+when writing the dataset to an actual file.
+This enables freely moving sections of data between files, with any
+referenced elements being re-created as required.</p>
+<p>TODO: ((following section: purpose + correctness doubtful))
+However, to preserve the hiearchical structure of referencing within groups,
+any referenced elements must must added and/or copied at the group level, as
+automatically generated reference elements are created at the top level.</p>
+<dl class="class">
+<dt id="ncobj.NcObj">
+<em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">NcObj</tt><big>(</big><em>name=None</em><big>)</big><a class="headerlink" href="#ncobj.NcObj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A generic (abstract) object representing a named element, aka a NetCDF &#8220;component&#8221;.</p>
+<dl class="method">
+<dt id="ncobj.NcObj.detached_copy">
+<tt class="descname">detached_copy</tt><big>(</big><big>)</big><a class="headerlink" href="#ncobj.NcObj.detached_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an independent &#8216;unlinked&#8217; copy of this element.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcObj.__eq__">
+<tt class="descname">__eq__</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#ncobj.NcObj.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether equal to another.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcObj.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>name=None</em><big>)</big><a class="headerlink" href="#ncobj.NcObj.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Args:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>name (string):</dt>
+<dd><p class="first last">The name of this element (unique within any containing element).</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncobj.NcObj.container">
+<tt class="descname">container</tt><a class="headerlink" href="#ncobj.NcObj.container" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#ncobj.NcobjContainer" title="ncobj.NcobjContainer"><tt class="xref py py-class docutils literal"><span class="pre">NcobjContainer</span></tt></a> this is in, if any.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcObj.is_definition">
+<tt class="descname">is_definition</tt><big>(</big><big>)</big><a class="headerlink" href="#ncobj.NcObj.is_definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether this element is a definition within a group.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncobj.NcObj.name">
+<tt class="descname">name</tt><a class="headerlink" href="#ncobj.NcObj.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the element.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcObj.rename">
+<tt class="descname">rename</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#ncobj.NcObj.rename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rename the element.</p>
+<p>Args:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>name (string):</dt>
+<dd><p class="first last">the new name for this element.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This affects the container, if it is in one, and can raise an
+error if the name already exists in the container.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcObj.remove">
+<tt class="descname">remove</tt><big>(</big><big>)</big><a class="headerlink" href="#ncobj.NcObj.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove from the parent container, if any.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.Dimension">
+<em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">Dimension</tt><big>(</big><em>name</em>, <em>length=None</em>, <em>unlimited=False</em><big>)</big><a class="headerlink" href="#ncobj.Dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.NcObj" title="ncobj.NcObj"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.NcObj</span></tt></a></p>
+<p>A NetCDF dimension object.</p>
+<dl class="attribute">
+<dt id="ncobj.Dimension.length">
+<tt class="descname">length</tt><em class="property"> = None</em><a class="headerlink" href="#ncobj.Dimension.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>The length of the dimension.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncobj.Dimension.unlimited">
+<tt class="descname">unlimited</tt><em class="property"> = None</em><a class="headerlink" href="#ncobj.Dimension.unlimited" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the dimension is unlimited.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.Attribute">
+<em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">Attribute</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#ncobj.Attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.NcObj" title="ncobj.NcObj"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.NcObj</span></tt></a></p>
+<p>A NetCDF attribute object.</p>
+<dl class="attribute">
+<dt id="ncobj.Attribute.value">
+<tt class="descname">value</tt><em class="property"> = None</em><a class="headerlink" href="#ncobj.Attribute.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>The value of the attribute.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.Variable">
+<em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">Variable</tt><big>(</big><em>name</em>, <em>dimensions=None</em>, <em>dtype=None</em>, <em>data=None</em>, <em>attributes=None</em><big>)</big><a class="headerlink" href="#ncobj.Variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.NcObj" title="ncobj.NcObj"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.NcObj</span></tt></a></p>
+<p>A NetCDF variable object.</p>
+<dl class="attribute">
+<dt id="ncobj.Variable.dimensions">
+<tt class="descname">dimensions</tt><em class="property"> = None</em><a class="headerlink" href="#ncobj.Variable.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#ncobj.Dimension" title="ncobj.Dimension"><tt class="xref py py-class docutils literal"><span class="pre">Dimension</span></tt></a> s of the variable.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncobj.Variable.attributes">
+<tt class="descname">attributes</tt><em class="property"> = None</em><a class="headerlink" href="#ncobj.Variable.attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#ncobj.Attribute" title="ncobj.Attribute"><tt class="xref py py-class docutils literal"><span class="pre">Attribute</span></tt></a> s of the variable.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncobj.Variable.data">
+<tt class="descname">data</tt><em class="property"> = None</em><a class="headerlink" href="#ncobj.Variable.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Variable data (indexable, with shape). Typically a
+<tt class="xref py py-class docutils literal"><span class="pre">NetCDF4.Variable</span></tt>, or <tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.NcobjContainer">
+<em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">NcobjContainer</tt><big>(</big><em>contents=None</em>, <em>in_element=None</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A generic (abstract) container object for <a class="reference internal" href="#ncobj.NcObj" title="ncobj.NcObj"><tt class="xref py py-class docutils literal"><span class="pre">NcObj</span></tt></a> objects
+(aka &#8220;elements&#8221;).</p>
+<dl class="attribute">
+<dt id="ncobj.NcobjContainer.element_type">
+<tt class="descname">element_type</tt><a class="headerlink" href="#ncobj.NcobjContainer.element_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The type (class) of elements this can contain.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>contents=None</em>, <em>in_element=None</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Args:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>contents (iterable):</dt>
+<dd><p class="first last">A set of elements specifying the initial contents.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>in_element (<a class="reference internal" href="#ncobj.NcObj" title="ncobj.NcObj"><tt class="xref py py-class docutils literal"><span class="pre">NcObj</span></tt></a>):</dt>
+<dd><p class="first last">The element that this container exists in (if any).
+If this is a group, then the container&#8217;s elements are definitions
+in that group (and self.is_definitions() is True).</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Note: the containers mostly emulate a dictionary.  A variety of
+indexing methods are provided &#8211; __setitem__, __getitem__,
+__delitem__, pop, add and remove (the last two take the element not
+the name).
+Use names() for the names, and iter() or list() for the contents.
+Assigning to an existing name is an error, so &#8220;self[name].name == name&#8221;
+is always true.  A blank name is also forbidden.
+len() is also supported.</p>
+<p>TODO: probably more constraints on names for NetCDF validity ??</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncobj.NcobjContainer.in_element">
+<tt class="descname">in_element</tt><a class="headerlink" href="#ncobj.NcobjContainer.in_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>The element that this container exists in, if any.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.is_definitions">
+<tt class="descname">is_definitions</tt><big>(</big><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.is_definitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether this contains definitions in a <a class="reference internal" href="#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">Group</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.detached_contents_copy">
+<tt class="descname">detached_contents_copy</tt><big>(</big><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.detached_contents_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of the container with detached copies of the elements.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.names">
+<tt class="descname">names</tt><big>(</big><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of names of the contained elements.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.__getitem__">
+<tt class="descname">__getitem__</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the named element.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.get">
+<tt class="descname">get</tt><big>(</big><em>name</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the named element, if any, or a default value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.setitem_reference">
+<tt class="descname">setitem_reference</tt><big>(</big><em>name</em>, <em>element</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.setitem_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Put an element reference in the container, as _content[name]=value.</p>
+<p>This is a lower-level operation than
+<a class="reference internal" href="#ncobj.NcobjContainer.__setitem__" title="ncobj.NcobjContainer.__setitem__"><tt class="xref py py-meth docutils literal"><span class="pre">__setitem__()</span></tt></a>, with important
+side-effects on the &#8216;element&#8217; arg: Whereas __setitem__ treats the
+assigned element simply as a value, of which it makes a detached copy,
+this method inserts the actual element specified (first removing it
+from any existing parent container).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.__setitem__">
+<tt class="descname">__setitem__</tt><big>(</big><em>name</em>, <em>element</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.__setitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place an element in the container under a given name.</p>
+<p>Note: content is copied from the provided element.  To insert an
+actual existing NcObj, use <a class="reference internal" href="#ncobj.NcobjContainer.setitem_reference" title="ncobj.NcobjContainer.setitem_reference"><tt class="xref py py-meth docutils literal"><span class="pre">setitem_reference()</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.pop">
+<tt class="descname">pop</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove and return the named element.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.__delitem__">
+<tt class="descname">__delitem__</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.__delitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the named element.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.remove">
+<tt class="descname">remove</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the matching element.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.add">
+<tt class="descname">add</tt><big>(</big><em>element</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place an element in the container under its existing name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.add_allof">
+<tt class="descname">add_allof</tt><big>(</big><em>elements</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.add_allof" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add multiple elements.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.remove_allof">
+<tt class="descname">remove_allof</tt><big>(</big><em>elements</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.remove_allof" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove multiple elements.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.__iter__">
+<tt class="descname">__iter__</tt><big>(</big><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over contents.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.__len__">
+<tt class="descname">__len__</tt><big>(</big><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return length.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.__eq__">
+<tt class="descname">__eq__</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether equal to another.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ncobj.NcobjContainer.rename_element">
+<tt class="descname">rename_element</tt><big>(</big><em>element</em>, <em>new_name</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.rename_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change content name (can raise KeyError).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.Group">
+<em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">Group</tt><big>(</big><em>name=''</em>, <em>dimensions=None</em>, <em>variables=None</em>, <em>attributes=None</em>, <em>sub_groups=None</em>, <em>parent_group=None</em><big>)</big><a class="headerlink" href="#ncobj.Group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.NcObj" title="ncobj.NcObj"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.NcObj</span></tt></a></p>
+<p>A NetCdf Group object.</p>
+<dl class="attribute">
+<dt id="ncobj.Group.dimensions">
+<tt class="descname">dimensions</tt><em class="property"> = None</em><a class="headerlink" href="#ncobj.Group.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference internal" href="#ncobj.NcDimensionsContainer" title="ncobj.NcDimensionsContainer"><tt class="xref py py-class docutils literal"><span class="pre">NcDimensionsContainer</span></tt></a> of dimensions in this Group.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncobj.Group.variables">
+<tt class="descname">variables</tt><em class="property"> = None</em><a class="headerlink" href="#ncobj.Group.variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference internal" href="#ncobj.NcVariablesContainer" title="ncobj.NcVariablesContainer"><tt class="xref py py-class docutils literal"><span class="pre">NcVariablesContainer</span></tt></a> of variables in this Group.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncobj.Group.attributes">
+<tt class="descname">attributes</tt><em class="property"> = None</em><a class="headerlink" href="#ncobj.Group.attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <tt class="xref py py-class docutils literal"><span class="pre">NcAttributeContainer</span></tt> of attributes in this Group.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncobj.Group.groups">
+<tt class="descname">groups</tt><em class="property"> = None</em><a class="headerlink" href="#ncobj.Group.groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <tt class="xref py py-class docutils literal"><span class="pre">NcGroupContainer</span></tt> of subgroups of this Group.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncobj.Group.parent_group">
+<tt class="descname">parent_group</tt><a class="headerlink" href="#ncobj.Group.parent_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the parent Group of this, if any.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.NcAttributesContainer">
+<em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">NcAttributesContainer</tt><big>(</big><em>contents=None</em>, <em>in_element=None</em><big>)</big><a class="headerlink" href="#ncobj.NcAttributesContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.NcobjContainer" title="ncobj.NcobjContainer"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.NcobjContainer</span></tt></a></p>
+<p>An <a class="reference internal" href="#ncobj.Attribute" title="ncobj.Attribute"><tt class="xref py py-class docutils literal"><span class="pre">Attribute</span></tt></a> container.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.NcDimensionsContainer">
+<em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">NcDimensionsContainer</tt><big>(</big><em>contents=None</em>, <em>in_element=None</em><big>)</big><a class="headerlink" href="#ncobj.NcDimensionsContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.NcobjContainer" title="ncobj.NcobjContainer"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.NcobjContainer</span></tt></a></p>
+<p>A <a class="reference internal" href="#ncobj.Dimension" title="ncobj.Dimension"><tt class="xref py py-class docutils literal"><span class="pre">Dimension</span></tt></a> container.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.NcVariablesContainer">
+<em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">NcVariablesContainer</tt><big>(</big><em>contents=None</em>, <em>in_element=None</em><big>)</big><a class="headerlink" href="#ncobj.NcVariablesContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.NcobjContainer" title="ncobj.NcobjContainer"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.NcobjContainer</span></tt></a></p>
+<p>A <a class="reference internal" href="#ncobj.Variable" title="ncobj.Variable"><tt class="xref py py-class docutils literal"><span class="pre">Variable</span></tt></a> container.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.NcGroupsContainer">
+<em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">NcGroupsContainer</tt><big>(</big><em>contents=None</em>, <em>in_element=None</em><big>)</big><a class="headerlink" href="#ncobj.NcGroupsContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.NcobjContainer" title="ncobj.NcobjContainer"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.NcobjContainer</span></tt></a></p>
+<p>A <a class="reference internal" href="#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">Group</span></tt></a> container.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ncobj</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/ncobj.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">ncobj 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, pp-mo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
