@@ -75,7 +75,8 @@ automatically generated reference elements are created at the top level.</p>
 <dt id="ncobj.NcObj">
 <em class="property">class </em><tt class="descclassname">ncobj.</tt><tt class="descname">NcObj</tt><big>(</big><em>name=None</em><big>)</big><a class="headerlink" href="#ncobj.NcObj" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
-<p>A generic (abstract) object representing a named element, aka a NetCDF &#8220;component&#8221;.</p>
+<p>A generic (abstract) object representing a named element, aka a NetCDF
+&#8220;component&#8221;.</p>
 <dl class="method">
 <dt id="ncobj.NcObj.detached_copy">
 <tt class="descname">detached_copy</tt><big>(</big><big>)</big><a class="headerlink" href="#ncobj.NcObj.detached_copy" title="Permalink to this definition">¶</a></dt>
@@ -307,8 +308,8 @@ actual existing NcObj, use <a class="reference internal" href="#ncobj.NcobjConta
 
 <dl class="method">
 <dt id="ncobj.NcobjContainer.pop">
-<tt class="descname">pop</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.pop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove and return the named element.</p>
+<tt class="descname">pop</tt><big>(</big><em>name</em>, <em>*args</em><big>)</big><a class="headerlink" href="#ncobj.NcobjContainer.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove and return the named element, or return default.</p>
 </dd></dl>
 
 <dl class="method">
