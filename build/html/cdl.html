@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ncobj.cdl &mdash; ncobj 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ncobj 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">ncobj 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-ncobj.cdl">
+<span id="ncobj-cdl"></span><h1>ncobj.cdl<a class="headerlink" href="#module-ncobj.cdl" title="Permalink to this headline">¶</a></h1>
+<p>Utility to produce a CDL-style readable output summary for an
+<a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></tt></a>.</p>
+<p>Output is designed to be similar to &#8220;ncdump -h&#8221;.  Variables data is completely
+omitted.</p>
+<p>Also includes a function to &#8216;canonicalise&#8217; results for comparison with actual
+ncdump output.</p>
+<p>Extra notes:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>The rendering of attribute values is still very primitive, and may not</dt>
+<dd><p class="first last">always work properly.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Only ncobj supported features are managed (so no user-types at all).</p>
+</li>
+<li><dl class="first docutils">
+<dt>Attributes containing vectors of strings are not handled, but at present</dt>
+<dd><p class="first last">netCDF4-python can not manage these anyway.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="function">
+<dt id="ncobj.cdl.comparable_cdl">
+<tt class="descclassname">ncobj.cdl.</tt><tt class="descname">comparable_cdl</tt><big>(</big><em>string</em><big>)</big><a class="headerlink" href="#ncobj.cdl.comparable_cdl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert free-format (c code like) text into a &#8216;canonical&#8217; form that can be
+directly compared.</p>
+<p>Replace all whitespace sequences with single spaces.
+Remove leading and trailing whitespace.
+Remove end-of-line comments.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently does not ignore comments within quotes.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncobj.cdl.group_cdl">
+<tt class="descclassname">ncobj.cdl.</tt><tt class="descname">group_cdl</tt><big>(</big><em>group</em>, <em>indent=0</em>, <em>plus_indent=4</em><big>)</big><a class="headerlink" href="#ncobj.cdl.group_cdl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a CDL output string representing a <a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></tt></a>.</p>
+<p>This attempts not just to produce valid CDL, but to replicate ncdump output.
+It will still differ in indenting, etc.</p>
+<p>If all is well, the output of this, processed via
+<a class="reference internal" href="#ncobj.cdl.comparable_cdl" title="ncobj.cdl.comparable_cdl"><tt class="xref py py-meth docutils literal"><span class="pre">comparable_cdl()</span></tt></a>, should match &#8216;ncdump&#8217; output, similarly
+processed.</p>
+<p>Args:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>group (<a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></tt></a>):</dt>
+<dd><p class="first last">group to generate representation of.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>indent (int):</dt>
+<dd><p class="first last">a number of spaces to prefix all output lines.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>plus_indent (int):</dt>
+<dd><p class="first last">indent interval to apply to inner parts.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>A single string with embedded newlines.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">&#8216;group&#8217; must be &#8220;complete&#8221; in the sense of
+<a class="reference internal" href="grouping.html#ncobj.grouping.complete" title="ncobj.grouping.complete"><tt class="xref py py-meth docutils literal"><span class="pre">ncobj.grouping.complete()</span></tt></a>, or various errors can occur.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ncobj.cdl</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/cdl.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">ncobj 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, pp-mo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
