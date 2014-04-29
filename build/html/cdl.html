@@ -91,11 +91,16 @@ Remove end-of-line comments.</p>
 <dt id="ncobj.cdl.group_cdl">
 <tt class="descclassname">ncobj.cdl.</tt><tt class="descname">group_cdl</tt><big>(</big><em>group</em>, <em>indent=0</em>, <em>plus_indent=4</em><big>)</big><a class="headerlink" href="#ncobj.cdl.group_cdl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a CDL output string representing a <a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></tt></a>.</p>
-<p>This attempts not just to produce valid CDL, but to replicate ncdump output.
-It will still differ in indenting, etc.</p>
+<p>This attempts not just to produce valid CDL, but to replicate ncdump
+output.  However, it will still differ in indenting, output order, and
+possibly the comments.</p>
 <p>If all is well, the output of this, processed via
 <a class="reference internal" href="#ncobj.cdl.comparable_cdl" title="ncobj.cdl.comparable_cdl"><tt class="xref py py-meth docutils literal"><span class="pre">comparable_cdl()</span></tt></a>, should match &#8216;ncdump&#8217; output, similarly
-processed.</p>
+processed.  However, there is a big caveat : this routine outputs all
+elements in alphabetical order, whereas &#8216;ncdump&#8217; uses creation order
+(?apparently?).  NetCDF4 abstracts away file- or handle- order (as does
+ncobj).  You can get around this by re-saving the data, resulting in a file
+_written_ in the alphabetical ordering.</p>
 <p>Args:</p>
 <ul>
 <li><dl class="first docutils">
