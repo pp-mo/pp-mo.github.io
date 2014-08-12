@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>ncobj.cdl &mdash; ncobj 0.1 documentation</title>
+    <title>ncobj.cdl &mdash; ncobj 0.3 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.1',
+        URL_ROOT:    './',
+        VERSION:     '0.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="ncobj 0.1 documentation" href="index.html" /> 
+    <link rel="top" title="ncobj 0.3 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,7 +35,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">ncobj 0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">ncobj 0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -48,8 +46,7 @@
             
   <div class="section" id="module-ncobj.cdl">
 <span id="ncobj-cdl"></span><h1>ncobj.cdl<a class="headerlink" href="#module-ncobj.cdl" title="Permalink to this headline">¶</a></h1>
-<p>Utility to produce a CDL-style readable output summary for an
-<a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></tt></a>.</p>
+<p>Utility to produce CDL-style output for an <tt class="xref py py-class docutils literal"><span class="pre">ncobj.Element</span></tt>.</p>
 <p>Output is designed to be similar to &#8220;ncdump -h&#8221;.  Variables data is completely
 omitted.</p>
 <p>Also includes a function to &#8216;canonicalise&#8217; results for comparison with actual
@@ -57,13 +54,7 @@ ncdump output.</p>
 <p>Extra notes:</p>
 <blockquote>
 <div><ul>
-<li><dl class="first docutils">
-<dt>The rendering of attribute values is still very primitive, and may not</dt>
-<dd><p class="first last">always work properly.</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Only ncobj supported features are managed (so no user-types at all).</p>
+<li><p class="first">Only ncobj supported features are managed (so currently no user-types).</p>
 </li>
 <li><dl class="first docutils">
 <dt>Attributes containing vectors of strings are not handled, but at present</dt>
@@ -88,9 +79,9 @@ Remove end-of-line comments.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="ncobj.cdl.group_cdl">
-<tt class="descclassname">ncobj.cdl.</tt><tt class="descname">group_cdl</tt><big>(</big><em>group</em>, <em>indent=0</em>, <em>plus_indent=4</em><big>)</big><a class="headerlink" href="#ncobj.cdl.group_cdl" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a CDL output string representing a <a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></tt></a>.</p>
+<dt id="ncobj.cdl.cdl">
+<tt class="descclassname">ncobj.cdl.</tt><tt class="descname">cdl</tt><big>(</big><em>element</em>, <em>indent=0</em>, <em>plus_indent=4</em><big>)</big><a class="headerlink" href="#ncobj.cdl.cdl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a CDL output string for an Ncobj element (aka NetCDF &#8216;component&#8217;).</p>
 <p>This attempts not just to produce valid CDL, but to replicate ncdump
 output.  However, it will still differ in indenting, output order, and
 possibly the comments.</p>
@@ -104,8 +95,8 @@ _written_ in the alphabetical ordering.</p>
 <p>Args:</p>
 <ul>
 <li><dl class="first docutils">
-<dt>group (<a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></tt></a>):</dt>
-<dd><p class="first last">group to generate representation of.</p>
+<dt>element (<a class="reference internal" href="ncobj.html#ncobj.NcObj" title="ncobj.NcObj"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.NcObj</span></tt></a>):</dt>
+<dd><p class="first last">item to generate a representation of.</p>
 </dd>
 </dl>
 </li>
@@ -128,7 +119,7 @@ _written_ in the alphabetical ordering.</p>
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">&#8216;group&#8217; must be &#8220;complete&#8221; in the sense of
+<p class="last">Groups must be &#8220;complete&#8221; in the sense of
 <a class="reference internal" href="grouping.html#ncobj.grouping.complete" title="ncobj.grouping.complete"><tt class="xref py py-meth docutils literal"><span class="pre">ncobj.grouping.complete()</span></tt></a>, or various errors can occur.</p>
 </div>
 </dd></dl>
@@ -186,12 +177,12 @@ _written_ in the alphabetical ordering.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">ncobj 0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">ncobj 0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2014, pp-mo.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
