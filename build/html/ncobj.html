@@ -52,16 +52,22 @@
 </div>
 <span class="target" id="module-ncobj"></span><p>An abstract representation of NetCDF data for manipulation purposes.</p>
 <p>The purpose of this is to allow arbitrary manipulation of NetCDF data,
-decoupled from the NetCDF file API.</p>
+decoupled from the netCDF4 file-based API.</p>
 <p>For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_in_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds_in</span><span class="p">:</span>
-    <span class="n">in_group</span> <span class="o">=</span> <span class="n">ncobj</span><span class="o">.</span><span class="n">nc_dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ds_in</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">ncobj.nc_dataset</span> <span class="kn">as</span> <span class="nn">ncds</span>
+<span class="k">with</span> <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_in_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds_in</span><span class="p">:</span>
+    <span class="n">in_group</span> <span class="o">=</span> <span class="n">ncds</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ds_in</span><span class="p">)</span>
     <span class="n">out_group</span> <span class="o">=</span> <span class="n">ncobj</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">in_group</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;my_&#39;</span><span class="p">):</span>
-            <span class="n">out_group</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
-    <span class="n">out_group</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ncobj</span><span class="o">.</span><span class="n">Attribute</span><span class="p">(</span><span class="s">&#39;Notes&#39;</span><span class="p">,</span> <span class="s">&#39;Subset for key=X.&#39;</span><span class="p">))</span>
-    <span class="n">ncobj</span><span class="o">.</span><span class="n">nc_dataset</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_out_path</span><span class="p">,</span> <span class="n">out_group</span><span class="p">)</span>
+
+    <span class="c"># Copy selected variables to output.</span>
+    <span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;measure&#39;</span><span class="p">,</span> <span class="s">&#39;x_points&#39;</span><span class="p">,</span> <span class="s">&#39;y_points&#39;</span><span class="p">):</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">in_group</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span>
+        <span class="c"># Remove any bounds references.</span>
+        <span class="n">var</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;bounds&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="n">out_group</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+
+    <span class="c"># Save selected variables (includes necessary dimensions).</span>
+    <span class="n">ncds</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_out_path</span><span class="p">,</span> <span class="n">out_group</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>A separate &#8216;nc_dataset&#8217; submodule provides an interface for reading and

@@ -47,10 +47,42 @@
   <div class="section" id="documention-for-ncobj">
 <h1>Documention for &#8216;ncobj&#8217;<a class="headerlink" href="#documention-for-ncobj" title="Permalink to this headline">¶</a></h1>
 <p>A Python object representation of NetCDF4 data, allowing more flexible
-programmatic handling of NetCDF files.
-Enables quick+easy copying of data from one netCDF4 file to another, with
+programmatic handling of NetCDF files.</p>
+<p>Enables quick+easy copying of data from one netCDF4 file to another, with
 arbitrary changes.  Intended scope similar to NCO commands.</p>
-<p>On GitHub : <a class="reference external" href="https://github.com/pp-mo/ncobj">https://github.com/pp-mo/ncobj</a></p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">ncobj.nc_dataset</span> <span class="kn">as</span> <span class="nn">ncds</span>
+<span class="k">with</span> <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_in_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds_in</span><span class="p">:</span>
+    <span class="n">in_group</span> <span class="o">=</span> <span class="n">ncds</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ds_in</span><span class="p">)</span>
+    <span class="n">out_group</span> <span class="o">=</span> <span class="n">ncobj</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">in_group</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;my_temp&#39;</span><span class="p">]</span>
+    <span class="n">var</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">out_group</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+    <span class="n">ncds</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_out_path</span><span class="p">,</span> <span class="n">out_group</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Latest web docs : <a class="reference external" href="http://pp-mo.github.io/build/html/index.html">http://pp-mo.github.io/build/html/index.html</a></p>
+<div class="section" id="current-status">
+<h2>Current Status<a class="headerlink" href="#current-status" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>VERSION &#8220;0.3&#8221; <span class="classifier-delimiter">:</span> <span class="classifier">2014-09-12</span></dt>
+<dd><ul class="first last simple">
+<li>Core classes written and full unit tests.</li>
+<li>File i/o via netCDF4 (ncobj.nc_dataset)</li>
+<li>CDL generation facility for ncobj elements.</li>
+<li>Documentation with Sphinx</li>
+<li>Working examples:<ul>
+<li>generate netcdf file from scratch</li>
+<li>subset all data by dimensions</li>
+<li>alphabetic-ordered CDL dumps</li>
+<li>&#8216;semantic containers&#8217; manipulations</li>
+</ul>
+</li>
+<li>Non-working usecase examples demonstrate intended coding forms + api.</li>
+</ul>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -69,7 +101,10 @@ arbitrary changes.  Intended scope similar to NCO commands.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Documention for &#8216;ncobj&#8217;</a></li>
+<li><a class="reference internal" href="#">Documention for &#8216;ncobj&#8217;</a><ul>
+<li><a class="reference internal" href="#current-status">Current Status</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
