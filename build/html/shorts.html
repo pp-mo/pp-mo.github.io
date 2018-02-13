@@ -1,32 +1,31 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>ncobj.shorts &mdash; ncobj 0.3 documentation</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <title>ncobj.shorts &#8212; ncobj 0.4 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.3',
+        VERSION:     '0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="ncobj 0.3 documentation" href="index.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -35,46 +34,42 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">ncobj 0.3 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">ncobj 0.4 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-ncobj.shorts">
 <span id="ncobj-shorts"></span><h1>ncobj.shorts<a class="headerlink" href="#module-ncobj.shorts" title="Permalink to this headline">¶</a></h1>
 <p>Convenient shorthands for NcObj element constructors.</p>
 <dl class="function">
 <dt id="ncobj.shorts.og">
-<tt class="descclassname">ncobj.shorts.</tt><tt class="descname">og</tt><big>(</big><em>name</em>, <em>aa=None</em>, <em>dd=None</em>, <em>vv=None</em>, <em>gg=None</em><big>)</big><a class="headerlink" href="#ncobj.shorts.og" title="Permalink to this definition">¶</a></dt>
-<dd><p>Shortform <a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></tt></a> constructor.</p>
+<code class="descclassname">ncobj.shorts.</code><code class="descname">og</code><span class="sig-paren">(</span><em>name</em>, <em>aa=None</em>, <em>dd=None</em>, <em>vv=None</em>, <em>gg=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.shorts.og" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortform <a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></code></a> constructor.</p>
 <p>Args:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
-<dt>aa (iterable of <a class="reference internal" href="ncobj.html#ncobj.Attribute" title="ncobj.Attribute"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Attribute</span></tt></a>):</dt>
-<dd><p class="first last">attributes</p>
-</dd>
+<dt>aa (iterable of <a class="reference internal" href="ncobj.html#ncobj.Attribute" title="ncobj.Attribute"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Attribute</span></code></a>):</dt>
+<dd>attributes</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>dd (iterable of <a class="reference internal" href="ncobj.html#ncobj.Dimension" title="ncobj.Dimension"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Dimension</span></tt></a>):</dt>
-<dd><p class="first last">dimensions</p>
-</dd>
+<dt>dd (iterable of <a class="reference internal" href="ncobj.html#ncobj.Dimension" title="ncobj.Dimension"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Dimension</span></code></a>):</dt>
+<dd>dimensions</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>vv (iterable of <a class="reference internal" href="ncobj.html#ncobj.Variable" title="ncobj.Variable"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Variable</span></tt></a>):</dt>
-<dd><p class="first last">variables</p>
-</dd>
+<dt>vv (iterable of <a class="reference internal" href="ncobj.html#ncobj.Variable" title="ncobj.Variable"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Variable</span></code></a>):</dt>
+<dd>variables</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>gg (iterable of <a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></tt></a>):</dt>
-<dd><p class="first last">(sub-)groups</p>
-</dd>
+<dt>gg (iterable of <a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></code></a>):</dt>
+<dd>(sub-)groups</dd>
 </dl>
 </li>
 </ul>
@@ -82,14 +77,13 @@
 
 <dl class="function">
 <dt id="ncobj.shorts.oa">
-<tt class="descclassname">ncobj.shorts.</tt><tt class="descname">oa</tt><big>(</big><em>name</em>, <em>v=None</em><big>)</big><a class="headerlink" href="#ncobj.shorts.oa" title="Permalink to this definition">¶</a></dt>
-<dd><p>Shortform <a class="reference internal" href="ncobj.html#ncobj.Attribute" title="ncobj.Attribute"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Attribute</span></tt></a> constructor.</p>
+<code class="descclassname">ncobj.shorts.</code><code class="descname">oa</code><span class="sig-paren">(</span><em>name</em>, <em>v=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.shorts.oa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortform <a class="reference internal" href="ncobj.html#ncobj.Attribute" title="ncobj.Attribute"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Attribute</span></code></a> constructor.</p>
 <p>Args:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>v (array-like scalar or vector):</dt>
-<dd><p class="first last">value</p>
-</dd>
+<dd>value</dd>
 </dl>
 </li>
 </ul>
@@ -97,20 +91,18 @@
 
 <dl class="function">
 <dt id="ncobj.shorts.od">
-<tt class="descclassname">ncobj.shorts.</tt><tt class="descname">od</tt><big>(</big><em>name</em>, <em>l=None</em>, <em>u=False</em><big>)</big><a class="headerlink" href="#ncobj.shorts.od" title="Permalink to this definition">¶</a></dt>
-<dd><p>Shortform <a class="reference internal" href="ncobj.html#ncobj.Dimension" title="ncobj.Dimension"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Dimension</span></tt></a> constructor.</p>
+<code class="descclassname">ncobj.shorts.</code><code class="descname">od</code><span class="sig-paren">(</span><em>name</em>, <em>l=None</em>, <em>u=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.shorts.od" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortform <a class="reference internal" href="ncobj.html#ncobj.Dimension" title="ncobj.Dimension"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Dimension</span></code></a> constructor.</p>
 <p>Args:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>l (int):</dt>
-<dd><p class="first last">length</p>
-</dd>
+<dd>length</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>u (bool):</dt>
-<dd><p class="first last">unlimited</p>
-</dd>
+<dd>unlimited</dd>
 </dl>
 </li>
 </ul>
@@ -118,26 +110,23 @@
 
 <dl class="function">
 <dt id="ncobj.shorts.ov">
-<tt class="descclassname">ncobj.shorts.</tt><tt class="descname">ov</tt><big>(</big><em>name</em>, <em>dd=None</em>, <em>aa=None</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#ncobj.shorts.ov" title="Permalink to this definition">¶</a></dt>
-<dd><p>Shortform <a class="reference internal" href="ncobj.html#ncobj.Variable" title="ncobj.Variable"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Variable</span></tt></a> constructor.</p>
+<code class="descclassname">ncobj.shorts.</code><code class="descname">ov</code><span class="sig-paren">(</span><em>name</em>, <em>dd=None</em>, <em>aa=None</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.shorts.ov" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortform <a class="reference internal" href="ncobj.html#ncobj.Variable" title="ncobj.Variable"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Variable</span></code></a> constructor.</p>
 <p>Args:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
-<dt>dd (iterable of <a class="reference internal" href="ncobj.html#ncobj.Dimension" title="ncobj.Dimension"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Dimension</span></tt></a>):</dt>
-<dd><p class="first last">dimensions</p>
-</dd>
+<dt>dd (iterable of <a class="reference internal" href="ncobj.html#ncobj.Dimension" title="ncobj.Dimension"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Dimension</span></code></a>):</dt>
+<dd>dimensions</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>aa (iterable of <a class="reference internal" href="ncobj.html#ncobj.Attribute" title="ncobj.Attribute"><tt class="xref py py-class docutils literal"><span class="pre">ncobj.Attribute</span></tt></a>):</dt>
-<dd><p class="first last">attributes</p>
-</dd>
+<dt>aa (iterable of <a class="reference internal" href="ncobj.html#ncobj.Attribute" title="ncobj.Attribute"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Attribute</span></code></a>):</dt>
+<dd>attributes</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>data (array-like):</dt>
-<dd><p class="first last">data</p>
-</dd>
+<dd>data</dd>
 </dl>
 </li>
 </ul>
@@ -147,9 +136,9 @@
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 
@@ -157,7 +146,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -165,29 +154,28 @@
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/shorts.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/shorts.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -196,12 +184,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">ncobj 0.3 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">ncobj 0.4 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2014, pp-mo.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, pp-mo.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

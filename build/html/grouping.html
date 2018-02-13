@@ -1,32 +1,31 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>ncobj.grouping &mdash; ncobj 0.3 documentation</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <title>ncobj.grouping &#8212; ncobj 0.4 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.3',
+        VERSION:     '0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="ncobj 0.3 documentation" href="index.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -35,28 +34,27 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">ncobj 0.3 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">ncobj 0.4 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-ncobj.grouping">
 <span id="ncobj-grouping"></span><h1>ncobj.grouping<a class="headerlink" href="#module-ncobj.grouping" title="Permalink to this headline">¶</a></h1>
 <p>Methods for dealing with the Group hierarchy.</p>
 <dl class="function">
 <dt id="ncobj.grouping.walk_group_objects">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">walk_group_objects</tt><big>(</big><em>group</em>, <em>of_types=None</em><big>)</big><a class="headerlink" href="#ncobj.grouping.walk_group_objects" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">walk_group_objects</code><span class="sig-paren">(</span><em>group</em>, <em>of_types=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.walk_group_objects" title="Permalink to this definition">¶</a></dt>
 <dd><p>Iterate over all contained components, recursively.</p>
 <p>Args:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>of_types (type or iterable of types):</dt>
-<dd><p class="first last">If used, filter results by &#8220;isinstance(&lt;element&gt;, of_types)&#8221;.</p>
-</dd>
+<dd>If used, filter results by “isinstance(&lt;element&gt;, of_types)”.</dd>
 </dl>
 </li>
 </ul>
@@ -68,65 +66,61 @@
 
 <dl class="function">
 <dt id="ncobj.grouping.all_variables">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">all_variables</tt><big>(</big><em>group</em><big>)</big><a class="headerlink" href="#ncobj.grouping.all_variables" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of all enclosed <a class="reference internal" href="ncobj.html#ncobj.Variable" title="ncobj.Variable"><tt class="xref py py-class docutils literal"><span class="pre">Variable</span></tt></a> definitions.</p>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">all_variables</code><span class="sig-paren">(</span><em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.all_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of all enclosed <a class="reference internal" href="ncobj.html#ncobj.Variable" title="ncobj.Variable"><code class="xref py py-class docutils literal"><span class="pre">Variable</span></code></a> definitions.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncobj.grouping.all_dimensions">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">all_dimensions</tt><big>(</big><em>group</em><big>)</big><a class="headerlink" href="#ncobj.grouping.all_dimensions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of all enclosed <a class="reference internal" href="ncobj.html#ncobj.Dimension" title="ncobj.Dimension"><tt class="xref py py-class docutils literal"><span class="pre">Dimension</span></tt></a> definitions.</p>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">all_dimensions</code><span class="sig-paren">(</span><em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.all_dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of all enclosed <a class="reference internal" href="ncobj.html#ncobj.Dimension" title="ncobj.Dimension"><code class="xref py py-class docutils literal"><span class="pre">Dimension</span></code></a> definitions.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncobj.grouping.all_groups">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">all_groups</tt><big>(</big><em>group</em><big>)</big><a class="headerlink" href="#ncobj.grouping.all_groups" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">all_groups</code><span class="sig-paren">(</span><em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.all_groups" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of all sub-groups.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncobj.grouping.group_path">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">group_path</tt><big>(</big><em>ncobj</em><big>)</big><a class="headerlink" href="#ncobj.grouping.group_path" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">group_path</code><span class="sig-paren">(</span><em>ncobj</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.group_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a string representing the absolute location of the element relative
 to the root group.</p>
 <p>Args:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
-<dt>ncobj (<a class="reference internal" href="ncobj.html#ncobj.NcObj" title="ncobj.NcObj"><tt class="xref py py-class docutils literal"><span class="pre">NcObj</span></tt></a>)</dt>
-<dd><p class="first last">The element to locate.</p>
-</dd>
+<dt>ncobj (<a class="reference internal" href="ncobj.html#ncobj.NcObj" title="ncobj.NcObj"><code class="xref py py-class docutils literal"><span class="pre">NcObj</span></code></a>)</dt>
+<dd>The element to locate.</dd>
 </dl>
 </li>
 </ul>
 <dl class="docutils">
 <dt>For example:</dt>
-<dd>group_path(&lt;var&gt;) &#8211;&gt; &#8220;/group_A/var_X&#8221;</dd>
+<dd>group_path(&lt;var&gt;) –&gt; “/group_A/var_X”</dd>
 </dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncobj.grouping.find_named_definition">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">find_named_definition</tt><big>(</big><em>group</em>, <em>name</em>, <em>element_type</em><big>)</big><a class="headerlink" href="#ncobj.grouping.find_named_definition" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">find_named_definition</code><span class="sig-paren">(</span><em>group</em>, <em>name</em>, <em>element_type</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.find_named_definition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Search groups upward for a definition by name and element type.</p>
 <p>Args:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
-<dt>group (<a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><tt class="xref py py-class docutils literal"><span class="pre">Group</span></tt></a>):</dt>
-<dd><p class="first last">The group to start searching at.</p>
-</dd>
+<dt>group (<a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><code class="xref py py-class docutils literal"><span class="pre">Group</span></code></a>):</dt>
+<dd>The group to start searching at.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>name (<a class="reference internal" href="ncobj.html#ncobj.NcObj" title="ncobj.NcObj"><tt class="xref py py-class docutils literal"><span class="pre">NcObj</span></tt></a>):</dt>
-<dd><p class="first last">The name the element should have.</p>
-</dd>
+<dt>name (<a class="reference internal" href="ncobj.html#ncobj.NcObj" title="ncobj.NcObj"><code class="xref py py-class docutils literal"><span class="pre">NcObj</span></code></a>):</dt>
+<dd>The name the element should have.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>element_type (type):</dt>
-<dd><p class="first last">The element type (class) to search for (defines the relevant Group
-container attribute).</p>
-</dd>
+<dd>The element type (class) to search for (defines the relevant Group
+container attribute).</dd>
 </dl>
 </li>
 </ul>
@@ -138,30 +132,30 @@ container attribute).</p>
 
 <dl class="exception">
 <dt id="ncobj.grouping.DimensionConflictError">
-<em class="property">exception </em><tt class="descclassname">ncobj.grouping.</tt><tt class="descname">DimensionConflictError</tt><a class="headerlink" href="#ncobj.grouping.DimensionConflictError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></a></p>
+<em class="property">exception </em><code class="descclassname">ncobj.grouping.</code><code class="descname">DimensionConflictError</code><a class="headerlink" href="#ncobj.grouping.DimensionConflictError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></a></p>
 <p>Exception raised when dimension information is invalid.</p>
 </dd></dl>
 
 <dl class="exception">
 <dt id="ncobj.grouping.NameConflictError">
-<em class="property">exception </em><tt class="descclassname">ncobj.grouping.</tt><tt class="descname">NameConflictError</tt><a class="headerlink" href="#ncobj.grouping.NameConflictError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></a></p>
+<em class="property">exception </em><code class="descclassname">ncobj.grouping.</code><code class="descname">NameConflictError</code><a class="headerlink" href="#ncobj.grouping.NameConflictError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></a></p>
 <p>Exception raised when names of components coincide.</p>
 </dd></dl>
 
 <dl class="exception">
 <dt id="ncobj.grouping.IncompleteStructureError">
-<em class="property">exception </em><tt class="descclassname">ncobj.grouping.</tt><tt class="descname">IncompleteStructureError</tt><big>(</big><em>var</em>, <em>dim</em><big>)</big><a class="headerlink" href="#ncobj.grouping.IncompleteStructureError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></a></p>
+<em class="property">exception </em><code class="descclassname">ncobj.grouping.</code><code class="descname">IncompleteStructureError</code><span class="sig-paren">(</span><em>var</em>, <em>dim</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.IncompleteStructureError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></a></p>
 <p>Exception raised when a required dimension definition is missing.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncobj.grouping.check_group_name_clashes">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">check_group_name_clashes</tt><big>(</big><em>group</em><big>)</big><a class="headerlink" href="#ncobj.grouping.check_group_name_clashes" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">check_group_name_clashes</code><span class="sig-paren">(</span><em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.check_group_name_clashes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check this group and subgroups for any name clashes between components.</p>
-<p>If found, raise a <a class="reference internal" href="#ncobj.grouping.NameConflictError" title="ncobj.grouping.NameConflictError"><tt class="xref py py-class docutils literal"><span class="pre">NameConflictError</span></tt></a> describing the first clash.</p>
+<p>If found, raise a <a class="reference internal" href="#ncobj.grouping.NameConflictError" title="ncobj.grouping.NameConflictError"><code class="xref py py-class docutils literal"><span class="pre">NameConflictError</span></code></a> describing the first clash.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Name collisions can occur between variables, subgroups and user-types:
@@ -171,83 +165,82 @@ In NetCDF, these components share a namespace within each group.</p>
 
 <dl class="function">
 <dt id="ncobj.grouping.add_missing_dims">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">add_missing_dims</tt><big>(</big><em>group</em><big>)</big><a class="headerlink" href="#ncobj.grouping.add_missing_dims" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">add_missing_dims</code><span class="sig-paren">(</span><em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.add_missing_dims" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create new definitions for any missing dimensions in the group.</p>
-<p>A missing dimension is one referred to by a variable in &#8216;group&#8217; or its
+<p>A missing dimension is one referred to by a variable in ‘group’ or its
 subgroups, for which no definition can be located by
-<a class="reference internal" href="#ncobj.grouping.find_named_definition" title="ncobj.grouping.find_named_definition"><tt class="xref py py-func docutils literal"><span class="pre">find_named_definition()</span></tt></a>.  The new ones are created in &#8216;group&#8217;.</p>
+<a class="reference internal" href="#ncobj.grouping.find_named_definition" title="ncobj.grouping.find_named_definition"><code class="xref py py-func docutils literal"><span class="pre">find_named_definition()</span></code></a>.  The new ones are created in ‘group’.</p>
 <dl class="docutils">
 <dt>Returns:</dt>
 <dd>A list of the definitions created for missing dimensions.</dd>
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If &#8216;group&#8217; is not itself the root, then a matching definition may be
+<p class="last">If ‘group’ is not itself the root, then a matching definition may be
 found in a parent group.  In these cases, no new definition is created
-(even though the required definition is outside &#8216;group&#8217;).</p>
+(even though the required definition is outside ‘group’).</p>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncobj.grouping.has_no_missing_dims">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">has_no_missing_dims</tt><big>(</big><em>group</em>, <em>fail_if_not=False</em><big>)</big><a class="headerlink" href="#ncobj.grouping.has_no_missing_dims" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">has_no_missing_dims</code><span class="sig-paren">(</span><em>group</em>, <em>fail_if_not=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.has_no_missing_dims" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check that matching definitions exist for all dimensions used in the
 variables of this group (and its sub-groups).</p>
 <p>Kwargs:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>fail_if_not (bool):</dt>
-<dd><p class="first last">If set, then if and when a missing dimension is found, raise an
-<a class="reference internal" href="#ncobj.grouping.IncompleteStructureError" title="ncobj.grouping.IncompleteStructureError"><tt class="xref py py-class docutils literal"><span class="pre">IncompleteStructureError</span></tt></a>, instead of just returning False.</p>
-</dd>
+<dd>If set, then if and when a missing dimension is found, raise an
+<a class="reference internal" href="#ncobj.grouping.IncompleteStructureError" title="ncobj.grouping.IncompleteStructureError"><code class="xref py py-class docutils literal"><span class="pre">IncompleteStructureError</span></code></a>, instead of just returning False.</dd>
 </dl>
 </li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If &#8216;group&#8217; is not itself the root, then a matching definition may be
-found in a parent group.  Such a dimension is not counted as &#8216;missing&#8217;
-(even though the required definition is outside &#8216;group&#8217;).</p>
+<p class="last">If ‘group’ is not itself the root, then a matching definition may be
+found in a parent group.  Such a dimension is not counted as ‘missing’
+(even though the required definition is outside ‘group’).</p>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncobj.grouping.check_consistent_dims_usage">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">check_consistent_dims_usage</tt><big>(</big><em>group</em><big>)</big><a class="headerlink" href="#ncobj.grouping.check_consistent_dims_usage" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">check_consistent_dims_usage</code><span class="sig-paren">(</span><em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.check_consistent_dims_usage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check that the requirements for all dimensions are consistent, and if not
-raise a <a class="reference internal" href="#ncobj.grouping.DimensionConflictError" title="ncobj.grouping.DimensionConflictError"><tt class="xref py py-class docutils literal"><span class="pre">DimensionConflictError</span></tt></a>.</p>
+raise a <a class="reference internal" href="#ncobj.grouping.DimensionConflictError" title="ncobj.grouping.DimensionConflictError"><code class="xref py py-class docutils literal"><span class="pre">DimensionConflictError</span></code></a>.</p>
 <p>This means that all references to each dimension must have the same length.
 Where variables have attached data, the length is taken from the data shape
-instead of the attached <tt class="xref py py-class docutils literal"><span class="pre">Dimension</span></tt> object, and the number of
+instead of the attached <code class="xref py py-class docutils literal"><span class="pre">Dimension</span></code> object, and the number of
 dimensions must also match.  Each dimension must also have a known length,
 meaning that at least one reference must define the length, or have
 attached data.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Can only be used on groups with no missing dimensions, as described for
-<tt class="xref py py-func docutils literal"><span class="pre">has_no_missing_dimensions()</span></tt>.
-Otherwise a <a class="reference internal" href="#ncobj.grouping.IncompleteStructureError" title="ncobj.grouping.IncompleteStructureError"><tt class="xref py py-class docutils literal"><span class="pre">IncompleteStructureError</span></tt></a> will be raised.</p>
+<code class="xref py py-func docutils literal"><span class="pre">has_no_missing_dimensions()</span></code>.
+Otherwise a <a class="reference internal" href="#ncobj.grouping.IncompleteStructureError" title="ncobj.grouping.IncompleteStructureError"><code class="xref py py-class docutils literal"><span class="pre">IncompleteStructureError</span></code></a> will be raised.</p>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="ncobj.grouping.complete">
-<tt class="descclassname">ncobj.grouping.</tt><tt class="descname">complete</tt><big>(</big><em>group</em><big>)</big><a class="headerlink" href="#ncobj.grouping.complete" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ncobj.grouping.</code><code class="descname">complete</code><span class="sig-paren">(</span><em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.grouping.complete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make this group internally consistent, by adding any missing dimension
 definitions and linking all variable dimensions to their definitions.</p>
 <p>This makes the structure fully compliant with NetCDF constraints.  This
 ensures it is suitable to be written to a file.</p>
 <p>Dimension definitions are made consistent with the data and dimension
 information of all variables that reference them.  If this is not possible,
-as decribed for <a class="reference internal" href="#ncobj.grouping.check_consistent_dims_usage" title="ncobj.grouping.check_consistent_dims_usage"><tt class="xref py py-func docutils literal"><span class="pre">check_consistent_dims_usage()</span></tt></a>, a
-<a class="reference internal" href="#ncobj.grouping.DimensionConflictError" title="ncobj.grouping.DimensionConflictError"><tt class="xref py py-class docutils literal"><span class="pre">DimensionConflictError</span></tt></a> is raised.
-A dimension definition will also be made &#8216;unlimited&#8217; if any of the
+as decribed for <a class="reference internal" href="#ncobj.grouping.check_consistent_dims_usage" title="ncobj.grouping.check_consistent_dims_usage"><code class="xref py py-func docutils literal"><span class="pre">check_consistent_dims_usage()</span></code></a>, a
+<a class="reference internal" href="#ncobj.grouping.DimensionConflictError" title="ncobj.grouping.DimensionConflictError"><code class="xref py py-class docutils literal"><span class="pre">DimensionConflictError</span></code></a> is raised.
+A dimension definition will also be made ‘unlimited’ if any of the
 references requires it.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">A <a class="reference internal" href="#ncobj.grouping.NameConflictError" title="ncobj.grouping.NameConflictError"><tt class="xref py py-class docutils literal"><span class="pre">NameConflictError</span></tt></a> can also result if components have
+<p class="last">A <a class="reference internal" href="#ncobj.grouping.NameConflictError" title="ncobj.grouping.NameConflictError"><code class="xref py py-class docutils literal"><span class="pre">NameConflictError</span></code></a> can also result if components have
 conflicting names, as described for
-<a class="reference internal" href="#ncobj.grouping.check_group_name_clashes" title="ncobj.grouping.check_group_name_clashes"><tt class="xref py py-func docutils literal"><span class="pre">check_group_name_clashes()</span></tt></a>.</p>
+<a class="reference internal" href="#ncobj.grouping.check_group_name_clashes" title="ncobj.grouping.check_group_name_clashes"><code class="xref py py-func docutils literal"><span class="pre">check_group_name_clashes()</span></code></a>.</p>
 </div>
 </dd></dl>
 
@@ -255,9 +248,9 @@ conflicting names, as described for
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 
@@ -265,7 +258,7 @@ conflicting names, as described for
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -273,29 +266,28 @@ conflicting names, as described for
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/grouping.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/grouping.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -304,12 +296,12 @@ conflicting names, as described for
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">ncobj 0.3 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">ncobj 0.4 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2014, pp-mo.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, pp-mo.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

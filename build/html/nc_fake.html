@@ -1,0 +1,180 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ncobj.nc_fake &#8212; ncobj 0.4 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ncobj 0.4 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-ncobj.nc_fake">
+<span id="ncobj-nc-fake"></span><h1>ncobj.nc_fake<a class="headerlink" href="#module-ncobj.nc_fake" title="Permalink to this headline">¶</a></h1>
+<p>Module for wrapping an <a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></code></a> to make it as far as
+possible appear as if it were a <code class="xref py py-class docutils literal"><span class="pre">netCDF4.Dataset</span></code>.
+This is for read-only purposes : all dataset-changing methods are missing.</p>
+<p>At present this is focussed on delivering the ability to load these
+quasi-datasets into the Iris project (<a class="reference external" href="https://github.com/SciTools/iris">https://github.com/SciTools/iris</a>) :
+The emulation of any behaviours <em>not</em> used there are currently uncertain.</p>
+<dl class="class">
+<dt id="ncobj.nc_fake.Nc4ComponentMimic">
+<em class="property">class </em><code class="descclassname">ncobj.nc_fake.</code><code class="descname">Nc4ComponentMimic</code><span class="sig-paren">(</span><em>nco_component</em>, <em>parent_grp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.nc_fake.Nc4ComponentMimic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Abstract class providing general methods for all mimic object types.</p>
+<dl class="method">
+<dt id="ncobj.nc_fake.Nc4ComponentMimic.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>nco_component</em>, <em>parent_grp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.nc_fake.Nc4ComponentMimic.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a mimic object wrapping a <code class="xref py py-class docutils literal"><span class="pre">nco.Ncobj</span></code> component.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.nc_fake.DimensionMimic">
+<em class="property">class </em><code class="descclassname">ncobj.nc_fake.</code><code class="descname">DimensionMimic</code><span class="sig-paren">(</span><em>nco_component</em>, <em>parent_grp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.nc_fake.DimensionMimic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.nc_fake.Nc4ComponentMimic" title="ncobj.nc_fake.Nc4ComponentMimic"><code class="xref py py-class docutils literal"><span class="pre">ncobj.nc_fake.Nc4ComponentMimic</span></code></a></p>
+<p>A Dimension object mimic wrapper.</p>
+<p>Dimension properties: name, length, unlimited, (+ parent-group)</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.nc_fake.Nc4ComponentAttrsMimic">
+<em class="property">class </em><code class="descclassname">ncobj.nc_fake.</code><code class="descname">Nc4ComponentAttrsMimic</code><span class="sig-paren">(</span><em>nco_component</em>, <em>parent_grp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.nc_fake.Nc4ComponentAttrsMimic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.nc_fake.Nc4ComponentMimic" title="ncobj.nc_fake.Nc4ComponentMimic"><code class="xref py py-class docutils literal"><span class="pre">ncobj.nc_fake.Nc4ComponentMimic</span></code></a></p>
+<p>An abstract class for an Nc4ComponentMimic with attribute access.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.nc_fake.VariableMimic">
+<em class="property">class </em><code class="descclassname">ncobj.nc_fake.</code><code class="descname">VariableMimic</code><span class="sig-paren">(</span><em>nco_component</em>, <em>parent_grp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.nc_fake.VariableMimic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.nc_fake.Nc4ComponentAttrsMimic" title="ncobj.nc_fake.Nc4ComponentAttrsMimic"><code class="xref py py-class docutils literal"><span class="pre">ncobj.nc_fake.Nc4ComponentAttrsMimic</span></code></a></p>
+<p>A Variable object mimic wrapper.</p>
+<dl class="docutils">
+<dt>Variable properties:</dt>
+<dd>name, dimensions, dtype, data (+ attributes, parent-group)
+shape, size, ndim</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="ncobj.nc_fake.GroupMimic">
+<em class="property">class </em><code class="descclassname">ncobj.nc_fake.</code><code class="descname">GroupMimic</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.nc_fake.GroupMimic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ncobj.nc_fake.Nc4ComponentAttrsMimic" title="ncobj.nc_fake.Nc4ComponentAttrsMimic"><code class="xref py py-class docutils literal"><span class="pre">ncobj.nc_fake.Nc4ComponentAttrsMimic</span></code></a></p>
+<p>A Group object mimic wrapper.</p>
+<dl class="docutils">
+<dt>Group properties:</dt>
+<dd>name, dimensions, variables, (sub)groups (+ attributes, parent-group)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ncobj.nc_fake.fake_nc4python_dataset">
+<code class="descclassname">ncobj.nc_fake.</code><code class="descname">fake_nc4python_dataset</code><span class="sig-paren">(</span><em>ncobj_group</em><span class="sig-paren">)</span><a class="headerlink" href="#ncobj.nc_fake.fake_nc4python_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a wrapper around an <a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></code></a> object to emulate a
+:class:<a href="#id1"><span class="problematic" id="id2">`</span></a>netCDF4.Dataset’.</p>
+<p>The resulting <a class="reference internal" href="#ncobj.nc_fake.GroupMimic" title="ncobj.nc_fake.GroupMimic"><code class="xref py py-class docutils literal"><span class="pre">GroupMimic</span></code></a> supports the essential properties of a
+read-mode :class:<a href="#id3"><span class="problematic" id="id4">`</span></a>netCDF4.Dataset’, enabling an arbitrary netcdf data
+structure in memory to be “read” as if it were a file
+(i.e. without writing it to disk).</p>
+<p>In particular, variable data access is delegated to the original,
+underlying <a class="reference internal" href="ncobj.html#ncobj.Group" title="ncobj.Group"><code class="xref py py-class docutils literal"><span class="pre">ncobj.Group</span></code></a> object :  This provides deferred, sectional
+data access on request, in the usual way, avoiding the need to read in all
+the variable data.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ncobj.nc_fake</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/nc_fake.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ncobj 0.4 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, pp-mo.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

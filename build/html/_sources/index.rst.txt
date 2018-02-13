@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Documention for 'ncobj'
-=======================
+Documentation for 'ncobj'
+=========================
 
 A Python object representation of NetCDF4 data, allowing more flexible
 programmatic handling of NetCDF files.
@@ -23,22 +23,23 @@ For example::
         out_group.variables.add(var)
         ncds.write(file_out_path, out_group)
 
-Latest web docs : http://pp-mo.github.io/build/html/index.html
+Latest web docs : https://pp-mo.github.io/build/html/index.html
 
 Current Status
 --------------
+VERSION "0.4" : 2018-02-13
+ * added "ncobj.nc_fake" module, to make ncobj data mimic a readable fake netCDF4.Dataset
+
 VERSION "0.3" : 2014-09-12
  * Core classes written and full unit tests.
  * File i/o via netCDF4 (ncobj.nc_dataset)
  * CDL generation facility for ncobj elements.
  * Documentation with Sphinx
  * Working examples:
-
    * generate netcdf file from scratch
    * subset all data by dimensions
    * alphabetic-ordered CDL dumps
    * 'semantic containers' manipulations
-
  * Non-working usecase examples demonstrate intended coding forms + api.
 
 
